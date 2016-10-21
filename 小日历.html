@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=GBK">
+<title>小日历</title>
+<meta name="Generator" content="Vim/7.3">
+<meta name="plugin-version" content="vim7.3_v6">
+<meta name="syntax" content="none">
+<meta name="settings" content="use_css">
+<style type="text/css">
+	body{
+	padding:0;
+	}
+	table{
+    position:fixed;
+    top:20%;
+    right:27%;
+    
+    width:44%;
+    height:56%;
+   border:1px solid #66ccff;
+    border-collapse:collapse;
+     box-shadow:3px 3px 1px #888888;
+    }
+    td{
+    color:#66CCFF;
+    text-align:center;
+    font-size:14px;
+    }
+    td:hover{
+    background-color:#6699FF;
+    text-align:center;
+    transition-duration:1s;
+    transition-timing-function:1s;
+    color:white;
+    box-shadow:1px 1px 1px 1px #888888;
+    }
+
+    #outer{
+	   position:fixed;
+           top:5%;
+           right:24%;
+	    width:50%;
+	    height:77%;
+	    border:#0C9 1px solid;
+	    box-shadow:5px 5px 3px #888888;
+    }
+
+    #btn1{
+           position:fixed;
+           top:15%;
+	   left:32%;
+	   right:60%;
+           border:none;
+	   height:4%;
+	   background-color:#66CCFF;
+	   color:white;
+	   font-size:14px;
+	   border-radius:4px;
+	   width:6%;
+
+           
+   }
+   #btn1:hover{
+          position:fixed;
+           top:15%;
+	   left:32%;
+	   right:60%;
+           border:none;
+	   height:4%;
+	   background-color:#6699FF;
+	   color:white;
+	   font-size:13px;
+	   border-radius:4px;
+	   width:6%;
+	   transition-duration:1s;
+    transition-timing-function:1s;
+   
+   }
+   .btnImg1{
+	   position:fixed;
+           top:16%;
+	   left:29%;
+	   right:60%;
+	   border:none;
+	   background-color:white;
+	   height:4%;
+	   color:white;
+	   border-radius:4px;
+	   width:2%;
+   }
+    .btnImg2{
+	   position:fixed;
+           top:16%;
+	   left:39%;
+	   right:60%;
+	   border:none;
+	   background-color:white;
+	   height:4%;
+	   color:white;
+	   border-radius:4px;
+	   width:2%;
+   }
+
+   img:hover{
+	   border:none;
+	   box-shadow:1px 1px 1px 1px #66CA7D;
+
+   }
+
+   #writeTime{
+          position:fixed;
+           top:8%;
+	   left:29%;
+	   right:60%;
+	   background-color:#6699FF;
+	   color:white;
+	   height:4%;   
+	   border-radius:4px;
+	   width:29%;
+	   text-align:center;
+	   line-height:35px;
+	   box-shadow:1px 1px 1px 1px #66ccff;
+   }
+</style>
+<script type="text/javascript">
+ <!--
+function autocreate(){
+    //创建table表格
+    var table=document.createElement("table");
+    table.setAttribute("border","1");
+    table.setAttribute("color","#66CCFF");
+    //获取行数值
+   // var line=document.getElementById("line").value;
+    //获取列数值
+ //   var list=document.getElementById("list").value;
+    for(var i=1;i<=7;i++){
+        //alert(line);
+        //创建tr
+        var tr=document.createElement("tr");
+        for(var j=1;j<=7;j++){
+            //alert(list);
+            //创建td
+		var td=document.createElement("td");
+
+		if(i==1){
+
+			switch(j){      
+				case 1: td.innerHTML="星期一";
+			          break;
+				case 2: td.innerHTML="星期二";
+					break;
+				case 3: td.innerHTML="星期三";
+					break;
+				case 4: td.innerHTML="星期四";
+					break;
+				case 5: td.innerHTML="星期五";
+					break;
+				case 6: td.innerHTML="星期六";
+					break;
+				case 7: td.innerHTML="星期日";
+					break;
+			}			
+		}
+			var myDate = new Date();  
+      myDate.toLocaleDateString();//可以获取当前日期
+      myDate.toLocaleTimeString(); //可以获取当前时间
+	document.getElementById("writeTime").innerHTML=Date();//可以获取当前日期
+		
+            tr.appendChild(td);
+            }
+           table.appendChild(tr); 
+        }
+         document.getElementById("d1").appendChild(table);
+  
+   }
+   
+
+</script>
+</head>
+<body onload="autocreate()">
+
+	<center>
+	
+		<div id="outer">
+			<div id="writeTime"></div>
+			<div class="btnImg1">
+				<img  src="E:\STUDY\前端\素材\小图标\green_pixel_43.gif" /></div>
+				<div class="btnImg2">
+				<img  src="E:\STUDY\前端\素材\小图标\green_pixel_13.gif" /></div>
+			
+		
+			<button title="today" id="btn1"><center>today</center?</button>
+		
+			
+				<div id="d1"></div>
+		</div>
+</center>	
+</body>
+</html>
+
