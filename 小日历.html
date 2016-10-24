@@ -133,18 +133,21 @@ function autocreate(){
     //获取行数值
    // var line=document.getElementById("line").value;
     //获取列数值
- //   var list=document.getElementById("list").value;
+    //   var list=document.getElementById("list").value;
+  var k=1;
+
     for(var i=1;i<=7;i++){
         //alert(line);
-        //创建tr
+	//创建tr
+ 
         var tr=document.createElement("tr");
         for(var j=1;j<=7;j++){
             //alert(list);
-            //创建td
+	    //创建td
 		var td=document.createElement("td");
-
+                 
 		if(i==1){
-
+                   td.setAttribute("border","0");
 			switch(j){      
 				case 1: td.innerHTML="星期一";
 			          break;
@@ -160,11 +163,41 @@ function autocreate(){
 					break;
 				case 7: td.innerHTML="星期日";
 					break;
-			}			
+			}
 		}
-			var myDate = new Date();  
-      myDate.toLocaleDateString();//可以获取当前日期
-      myDate.toLocaleTimeString(); //可以获取当前时间
+
+		else{   
+		       
+			var myDate = new Date();
+			var  d1=myDate.getDate();
+			var  thisyear=myDate.getFullYear();
+			var  thismonth=myDate.getMonth()+1;
+			var d2=new Date(thisyear,thismonth-1, 1);
+		    
+			//	console.log(d2.getDay());//获取本月的第一天的星期几
+                        var d3=new Date(thisyear,thismonth, 0);
+			console.log(d3.getDate());//获取本月的天数
+	        
+
+		
+			
+                   // myDate.toLocaleDateString();//可以获取当前日期
+     	             //myDate.toLocaleTimeString(); //可以获取当前时间
+                   // console.log(myDate.getDay());
+		 
+		 
+			if(j<d2.getDay()&&(i==2)){
+				td.innerHTML='';
+			}else{
+			        if(k<=d3.getDate())
+				     td.innerHTML=k;
+				k++;
+			}
+		
+		}
+
+
+		
 	document.getElementById("writeTime").innerHTML=Date();//可以获取当前日期
 		
             tr.appendChild(td);
