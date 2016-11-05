@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=GBK">
+<title>颜色选择设置.html</title>
+<meta name="Generator" content="Vim/7.3">
+<meta name="plugin-version" content="vim7.3_v6">
+<meta name="syntax" content="none">
+<meta name="settings" content="use_css">
+<style type="text/css">
+	body{
+		padding:0;
+		margin:0;
+		width:1035px;
+	}
+	#colorDiv{
+		width:100px;
+		height:100px;
+	    background-color:#ffc;
+	
+	}
+	#cover{
+		position:fixed;
+		width:100%;
+		height:100%;
+		z-index:10;
+		opacity:0.2;
+		visibility:hidden;
+		top:0px;
+		left:0px;
+		display:block;
+        background-color:rgb(0,0,0);
+	
+       }
+       
+       #colorSelect{
+	       position:fixed;
+	       width:300px;
+	       height:300px;
+	       top:20%;
+	       right:30%;
+	       opacity:0.4;
+	       z-index:20;
+	       display:block;
+	       background-color:white;
+	       visibility:hidden;
+	       padding:0;
+	       margin:0;
+	       color:white;
+ 
+       }
+       #white{
+	 
+          position:fixed;
+	  width:270px;
+	  height:270px;
+	  top:22%;
+	  right:31%;
+	  opacity:1;
+	  z-index:300;
+	  display:block;
+	  background-color:white;
+	  visibility:hidden;
+	  border:1px solid white;   
+	  font:12px;
+       }
+       #select1{
+	      width:270px;
+	      height:270px;
+	     
+	      position:fixed;
+	      top:22%;
+       }
+
+</style>
+<script type="text/javascript">
+
+         var red1=document.getElementById("red1");
+         var yellow1=document.getElementById("yellow1");
+         var blue1=document.getElementById("blue1");
+         var width1=document.getElementById("width1");
+         var width2=document.getElementById("width2");
+         var width3=document.getElementById("width3");
+         var height1=document.getElementById("height1");
+         var height2=document.getElementById("height2");
+         var height3=document.getElementById("height3");
+        
+
+
+         var red1=document.getElementById("red1");
+         var yellow1=document.getElementById("yellow1");
+         var blue1=document.getElementById("blue1");
+         var color1,color2,color3;
+       function selectColor(Color){
+
+
+          var colorDiv=document.getElementById("colorDiv");
+       	 color1=document.getElementById("red1").value;
+       	 color2=document.getElementById("yellow1").value;
+       	 color3=document.getElementById("blue1").value;
+       	 if(Color==color1){
+       	 	colorDiv.style.background='red';
+       //	alert(colorDiv.style.background);
+
+       }else if(Color==color2){
+       	colorDiv.style.background='yellow';
+       		//alert(color2);
+       	}else{
+       		colorDiv.style.background='blue';
+       		//alert(color3);
+       	}
+       /*alert(color2);
+        alert(color3);
+*/
+
+
+
+       }
+        
+
+        var Width,width1,width2,width3;
+       function selectWidth(Width){
+       	 var width1=document.getElementById("width1").value;
+         var width2=document.getElementById("width2").value;
+         var width3=document.getElementById("width3").value;
+         var colorDiv=document.getElementById("colorDiv");
+
+         if(Width==width1){
+         	colorDiv.style.width='200px';
+         	//alert(width1);
+         }else if(Width==width2){
+         	colorDiv.style.width='300px';
+         	//alert(width2);
+         }else{
+         	colorDiv.style.width='400px';
+         	//alert(width3);
+         }
+       
+
+
+       }
+
+
+       var Height,height1,height2,height3;
+       function selectHeight(Height){
+       	 var height1=document.getElementById("height1").getAttribute("value");
+         var height2=document.getElementById("height2").getAttribute("value");
+         var height3=document.getElementById("height3").getAttribute("value");
+         var colorDiv=document.getElementById("colorDiv");
+           if(Height==height1){
+           	colorDiv.style.height='200px';
+           	//alert(height1);
+           }else if(Height==height2){
+           	colorDiv.style.height='300px';
+           	//alert(height2);
+           }else{
+           	colorDiv.style.height='400px';
+           	//alert(height3);
+           }
+
+       }
+
+	
+    
+</script>
+
+
+</head>
+<body>
+	<h2><span>点击可以设置颜色：</span>
+		<input id="btn1" type="button" value="button" /></h2>
+	<div id="cover"class="promptbg"></div>
+	</div>
+	<div id="colorDiv"></div>
+	<div id="colorSelect"></div>
+
+	<div id="white">
+		<table id="select1">
+			<tr><td>请设置颜色&nbsp:</td>
+			    <td><input id="red1" name="red1"type="button" value="red" onclick='selectColor("red")' /></td>
+				<td><input id="yellow1" name="yellow1"type="button" value="yellow" onclick='selectColor("yellow")'/></td>
+				<td><input id="blue1" name="blue1" type="button" value="blue" onclick='selectColor("blue")'/></td>
+			</br></br></tr> 
+	       	<tr><td>请设置宽&nbsp:</td>
+			<td><input id="width1" type="button" value="200" onclick='selectWidth("200")'/></td>
+			<td><input id="width2" type="button" value="300" onclick="selectWidth('300')"/></td>
+			<td><input id="width3" type="button" value="400" onclick="selectWidth('400')"/></td>
+		</br></br></tr>
+		<tr><td>请设置高&nbsp:</td>
+			<td><input id="height1" type="button" value="200" onclick='selectHeight("200")'/></td>
+			<td><input id="height2" type="button" value="300" onclick='selectHeight("300")'/></td>
+			<td><input id="height3" type="button" value="400" onclick='selectHeight("400")'/></td>
+		</br></br></tr>
+	
+		<center>	
+		<tr><td></td><td><input id="renew" type="button" value="恢复" onclick="renew()"/></td>
+		<td><input id="yes" type="button" value="确定" onclick="ensure()"/></td></tr>
+	</center>
+	</table>
+	</div>
+
+	<script type="text/javascript">
+	window.onload=function(){
+	   var btn1=document.getElementById("btn1");
+	   var colorDiv=document.getElementById("colorDiv");
+	   var cover=document.getElementById("cover");
+
+         
+
+	   btn1.onclick=function(){
+		  // colorDiv.style.background='black';
+		   cover.style.visibility='visible';
+		   white.style.visibility='visible';
+		   colorSelect.style.visibility='visible';
+	   
+	   
+	   }
+
+         yes.onclick=function(){
+           cover.style.visibility='hidden';
+		   white.style.visibility='hidden';
+		   colorSelect.style.visibility='hidden';
+
+         } 
+   
+   renew.onclick=function(){
+      colorDiv.style.background='#ffc';
+      	colorDiv.style.width='100px';
+      	colorDiv.style.height='100px';
+
+   }
+
+	   
+   }
+   </script>
+</body>
+</html>
+
