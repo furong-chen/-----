@@ -75,26 +75,15 @@
 </style>
 <script type="text/javascript">
 
-         var red1=document.getElementById("red1");
-         var yellow1=document.getElementById("yellow1");
-         var blue1=document.getElementById("blue1");
-         var width1=document.getElementById("width1");
-         var width2=document.getElementById("width2");
-         var width3=document.getElementById("width3");
-         var height1=document.getElementById("height1");
-         var height2=document.getElementById("height2");
-         var height3=document.getElementById("height3");
-        
-
-
+       var colorDiv;
          var red1=document.getElementById("red1");
          var yellow1=document.getElementById("yellow1");
          var blue1=document.getElementById("blue1");
          var color1,color2,color3;
        function selectColor(Color){
-
-
-          var colorDiv=document.getElementById("colorDiv");
+		colorDiv=document.getElementById("colorDiv");
+/*
+          
        	 color1=document.getElementById("red1").value;
        	 color2=document.getElementById("yellow1").value;
        	 color3=document.getElementById("blue1").value;
@@ -112,14 +101,14 @@
        /*alert(color2);
         alert(color3);
 */
-
+		colorDiv.style.backgroundColor=Color;
 
 
        }
         
 
         var Width,width1,width2,width3;
-       function selectWidth(Width){
+       function selectWidth(Width){/*
        	 var width1=document.getElementById("width1").value;
          var width2=document.getElementById("width2").value;
          var width3=document.getElementById("width3").value;
@@ -135,7 +124,8 @@
          	colorDiv.style.width='400px';
          	//alert(width3);
          }
-       
+       */
+       		colorDiv.style.width=Width+'px';
 
 
        }
