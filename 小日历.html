@@ -2,32 +2,34 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=GBK">
-<title>小日历</title>
+<title>小日历.html</title>
 <meta name="Generator" content="Vim/7.3">
 <meta name="plugin-version" content="vim7.3_v6">
 <meta name="syntax" content="none">
 <meta name="settings" content="use_css">
+<script type="text/javascript" src="E:\STUDY\前端\网页设计比赛\项目\jquery-3.1.1.js"></script>
 <style type="text/css">
 	body{
-	padding:0;
+		padding:0;
+		min-height:500px;
+		min-width:100px;
 	}
 	table{
     position:fixed;
     top:20%;
-    right:27%;
-    
-    width:44%;
-    height:56%;
-   border:1px solid #66ccff;
+    right:26%;
+    width:30%;
+    height:52%;
     border-collapse:collapse;
-     box-shadow:3px 3px 1px #888888;
+    
     }
     td{
     color:#66CCFF;
     text-align:center;
-    font-size:14px;
+    font-family:verdana;
+    font-size:0.5em;
     }
-    td:hover{
+    .myStyle{
     background-color:#6699FF;
     text-align:center;
     transition-duration:1s;
@@ -35,177 +37,254 @@
     color:white;
     box-shadow:1px 1px 1px 1px #888888;
     }
-
+   #changeColor{
+	  
+	   width:16%;
+	   height:70%;
+	   position:fixed;
+	   top:5%;
+	   left:25.8%;
+	   background:darkorchid;
+	   color:white;
+	   font-family:verdana,Georgia,Times,Times New Roman,serif;
+	   font-size:1.5em;
+           text-align:center;
+	   line-height:4.5em;
+   }
     #outer{
 	   position:fixed;
            top:5%;
            right:24%;
 	    width:50%;
-	    height:77%;
-	    border:#0C9 1px solid;
+	    height:70%;
+	    border:#C0C0C0 1px solid;
 	    box-shadow:5px 5px 3px #888888;
     }
 
     #btn1{
            position:fixed;
-           top:15%;
-	   left:32%;
-	   right:60%;
+           top:12%;
+	   right:34%;
            border:none;
-	   height:4%;
-	   background-color:#66CCFF;
+	   height:4.5%;
+	   background-color:darkorchid;
 	   color:white;
-	   font-size:14px;
+	   font-size:1em;
 	   border-radius:4px;
-	   width:6%;
+	   width:15%;
+	   text-align:center;
+	   line-height:30px;
 
            
    }
-   #btn1:hover{
+ /*  #btn1:hover{
           position:fixed;
-           top:15%;
-	   left:32%;
-	   right:60%;
+           top:12%;
+	   right:34%;
            border:none;
-	   height:4%;
-	   background-color:#6699FF;
+	   height:4.5%;
 	   color:white;
-	   font-size:13px;
+	   font-size:16px;
 	   border-radius:4px;
-	   width:6%;
+	   width:15%;
 	   transition-duration:1s;
-    transition-timing-function:1s;
+	   transition-timing-function:1s;
+	   box-shadow:1px 1px 2px #88888;
    
    }
-   .btnImg1{
+   */
+   #btnImg1{
 	   position:fixed;
-           top:16%;
-	   left:29%;
+           top:12%;
+	   left:45%;
 	   right:60%;
 	   border:none;
 	   background-color:white;
 	   height:4%;
-	   color:white;
+	   color:darkorchid;
 	   border-radius:4px;
 	   width:2%;
+	   /* border:1px solid darkorchid;*/  
    }
-    .btnImg2{
+    #btnImg2{
 	   position:fixed;
-           top:16%;
-	   left:39%;
+           top:12%;
+	   left:70%;
 	   right:60%;
 	   border:none;
 	   background-color:white;
 	   height:4%;
-	   color:white;
+	   color:darkorchid;
 	   border-radius:4px;
 	   width:2%;
+	  /* border:1px solid darkorchid;*/
    }
 
-   img:hover{
+   #btnImg1:hover, #btnImg2:hover{
 	   border:none;
-	   box-shadow:1px 1px 1px 1px #66CA7D;
+	   box-shadow:1px 1px 1px 1px darkorchid;
 
    }
-
-   #writeTime{
+/*
+ #writeTime{
           position:fixed;
            top:8%;
-	   left:29%;
+	   left:43%;
 	   right:60%;
-	   background-color:#6699FF;
+	   background-color:darkorchid;
 	   color:white;
 	   height:4%;   
-	   border-radius:4px;
-	   width:29%;
+	   border-radius:2px;
+	   width:30%;
 	   text-align:center;
-	   line-height:35px;
-	   box-shadow:1px 1px 1px 1px #66ccff;
+	   line-height:1em;
+*/	  
    }
 </style>
 <script type="text/javascript">
  <!--
 function autocreate(){
-    //创建table表格
+   
     var table=document.createElement("table");
-    table.setAttribute("border","1");
-    table.setAttribute("color","#66CCFF");
-    //获取行数值
-   // var line=document.getElementById("line").value;
-    //获取列数值
-    //   var list=document.getElementById("list").value;
-  var k=1;
+    var k=1;
+   
 
-    for(var i=1;i<=7;i++){
-        //alert(line);
-	//创建tr
- 
-        var tr=document.createElement("tr");
+    for(var i=1;i<=6;i++){
+	     var tr=document.createElement("tr");
+	    
         for(var j=1;j<=7;j++){
-            //alert(list);
-	    //创建td
 		var td=document.createElement("td");
                  
 		if(i==1){
-                   td.setAttribute("border","0");
+		//	var styleObj=document.styleSheets[0].cssRules[0].style;
+		//	styleObj.removeProperty('color');
+		//	document.styleSheet[0].deleteRule(0);
+			td.setAttribute("style","border:0");
+			td.setAttribute("style","font-size:1em")
+			//$('td').off('mouseenter').unbind('mouseleave');
 			switch(j){      
-				case 1: td.innerHTML="星期一";
+				case 1: td.innerHTML="MON";
 			          break;
-				case 2: td.innerHTML="星期二";
+				case 2: td.innerHTML="TUE";
 					break;
-				case 3: td.innerHTML="星期三";
+				case 3: td.innerHTML="WED";
 					break;
-				case 4: td.innerHTML="星期四";
+				case 4: td.innerHTML="THU";
 					break;
-				case 5: td.innerHTML="星期五";
+				case 5: td.innerHTML="FRI";
 					break;
-				case 6: td.innerHTML="星期六";
+				case 6: td.innerHTML="SAT";
 					break;
-				case 7: td.innerHTML="星期日";
+				case 7: td.innerHTML="SUN";
 					break;
 			}
 		}
 
-		else{   
-		       
+		else{  
+	
+		      td.setAttribute("style","border:0"); 
 			var myDate = new Date();
 			var  d1=myDate.getDate();
 			var  thisyear=myDate.getFullYear();
 			var  thismonth=myDate.getMonth()+1;
 			var d2=new Date(thisyear,thismonth-1, 1);
 		    
-			//	console.log(d2.getDay());//获取本月的第一天的星期几
+		
                         var d3=new Date(thisyear,thismonth, 0);
-			console.log(d3.getDate());//获取本月的天数
-	        
+		//	console.log(d3.getDate());
 
 		
 			
-                   // myDate.toLocaleDateString();//可以获取当前日期
-     	             //myDate.toLocaleTimeString(); //可以获取当前时间
-                   // console.log(myDate.getDay());
+                  
 		 
 		 
 			if(j<d2.getDay()&&(i==2)){
 				td.innerHTML='';
 			}else{
-			        if(k<=d3.getDate())
+				if(k<=d3.getDate())
 				     td.innerHTML=k;
-				k++;
+			
+				if(k==d1){
+					td.setAttribute("style","background:darkorchid;");
+			
+				}
+					k++;
 			}
 		
 		}
+                var t1=new Date();
+		var t2=t1.getMonth();
+		var t3=t1.getFullYear();
+		var t4=t1.getDate();
+	//	alert(t2);
+		var monthNum=["January","February","March","April","May","June","July","August","September","October","November","December"];
+		document.getElementById("changeColor").innerHTML=monthNum[t2]+'&nbsp;&nbsp<br/><font size="6px">'+t1.getDate()+'</font>';
+   
+	    	var val1=0,val2=0;
+	//	var btn1=document.getElementById("btn1");
+	//	var btnT1=new Date();
+	
+
+        var btnImg1=document.getElementById("btnImg1");
+	 var btnImg2=document.getElementById("btnImg2");
+	 btn1.innerHTML=t3+"年"+(t2+1)+"月"+t4+"日";
+	
+	 btnImg1.onclick=function(){
+		// val1++;
+		 // alert(val1);
+		 if(--t2>=0){
+			 btn1.innerHTML=t3+"年"+(t2+1)+"月"+t4+"日";
+		 }else{
+			 //if(t3)
+			 --t3;
+			 t2=12;
+			 --t2;
+			 btn1.innerHTML=t3+"年"+(t2+1)+"月"+t4+"日";
+
+                  //  alert("再加就是年了哦！");
+
+		 }
+
+	 }
+	 
+	 btnImg2.onclick=function(){
+		 if(++t2<=11){
+                btn1.innerHTML=t3+"年"+(t2+1)+"月"+t4+"日";
+	
+		// alert("hello!");
+		 }
+	 
+	 }
+	 btn1.onclick=function(){
+	 btn1.innerHTML=t3+"年"+(t2+1)+"月"+t4+"日";
+	 }
 
 
-		
-	document.getElementById("writeTime").innerHTML=Date();//可以获取当前日期
-		
             tr.appendChild(td);
             }
            table.appendChild(tr); 
         }
          document.getElementById("d1").appendChild(table);
-  
+  /*
+	 var window_width=document.documentElement.clientWidth;
+	 var window_height=document.documentElement.clientHeight;
+	
+	 alert(document.documentElement.clientWidth);
+	 alert(document.documentElement.clientHeight);
+	 window.onresize=new function(){
+		 if(window_width<600||window_height<500)
+		 {window.resizeTo(800,600);};
+
+		 }
+ */
+	 $('table td:gt(6)').hover(function(){
+			 if($('td').html()!=="undefined"){
+			 $(this).addClass('myStyle');}},
+					function(){
+					$(this).removeClass('myStyle');});
+ 
+       
+
    }
    
 
@@ -216,19 +295,19 @@ function autocreate(){
 	<center>
 	
 		<div id="outer">
-			<div id="writeTime"></div>
-			<div class="btnImg1">
-				<img  src="E:\STUDY\前端\素材\小图标\green_pixel_43.gif" /></div>
-				<div class="btnImg2">
-				<img  src="E:\STUDY\前端\素材\小图标\green_pixel_13.gif" /></div>
+		
+			<div id="changeColor"></div>
+			<div  id="btnImg1" style="cursor:pointer;"><font style="font-size:1.5em"><</font></div>
+				<div id="btnImg2" style="cursor:pointer;"><font style="font-size:1.5em">></font></div>
 			
 		
-			<button title="today" id="btn1"><center>today</center?</button>
+				<div title="today" id="btn1" class="btn1" style="cursor:pointer;"><center></center></div>
 		
 			
 				<div id="d1"></div>
 		</div>
-</center>	
+	</center>
+	<div id="writeTime"></div>	
 </body>
 </html>
 
