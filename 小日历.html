@@ -1,13 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!doctype html public "-//w3c//dtd html 4.01//en" "http://www.w3.org/tr/html4/strict.dtd">
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=GBK">
+<meta http-equiv="content-type" content="text/html; charset=gbk">
 <title>小日历.html</title>
-<meta name="Generator" content="Vim/7.3">
+<meta name="generator" content="vim/7.3">
 <meta name="plugin-version" content="vim7.3_v6">
 <meta name="syntax" content="none">
 <meta name="settings" content="use_css">
-<script type="text/javascript" src="E:\STUDY\前端\网页设计比赛\项目\jquery-3.1.1.js"></script>
+<script type="text/javascript" src="jquery-3.1.1.js"></script>
 <style type="text/css">
 	body{
 		padding:0;
@@ -24,20 +24,13 @@
     
     }
     td{
-    color:#66CCFF;
+    color:#66ccff;
     text-align:center;
     font-family:verdana;
     font-size:0.5em;
     }
-    .myStyle{
-    background-color:#6699FF;
-    text-align:center;
-    transition-duration:1s;
-    transition-timing-function:1s;
-    color:white;
-    box-shadow:1px 1px 1px 1px #888888;
-    }
-   #changeColor{
+    
+   #changecolor{
 	  
 	   width:16%;
 	   height:70%;
@@ -46,7 +39,7 @@
 	   left:25.8%;
 	   background:darkorchid;
 	   color:white;
-	   font-family:verdana,Georgia,Times,Times New Roman,serif;
+	   font-family:verdana,georgia,times,times new roman,serif;
 	   font-size:1.5em;
            text-align:center;
 	   line-height:4.5em;
@@ -57,7 +50,7 @@
            right:24%;
 	    width:50%;
 	    height:70%;
-	    border:#C0C0C0 1px solid;
+	    border:#c0c0c0 1px solid;
 	    box-shadow:5px 5px 3px #888888;
     }
 
@@ -77,23 +70,8 @@
 
            
    }
- /*  #btn1:hover{
-          position:fixed;
-           top:12%;
-	   right:34%;
-           border:none;
-	   height:4.5%;
-	   color:white;
-	   font-size:16px;
-	   border-radius:4px;
-	   width:15%;
-	   transition-duration:1s;
-	   transition-timing-function:1s;
-	   box-shadow:1px 1px 2px #88888;
-   
-   }
-   */
-   #btnImg1{
+ 
+   #btnimg1{
 	   position:fixed;
            top:12%;
 	   left:45%;
@@ -106,7 +84,7 @@
 	   width:2%;
 	   /* border:1px solid darkorchid;*/  
    }
-    #btnImg2{
+    #btnimg2{
 	   position:fixed;
            top:12%;
 	   left:70%;
@@ -120,185 +98,125 @@
 	  /* border:1px solid darkorchid;*/
    }
 
-   #btnImg1:hover, #btnImg2:hover{
+   #btnimg1:hover, #btnimg2:hover{
 	   border:none;
 	   box-shadow:1px 1px 1px 1px darkorchid;
 
    }
-/*
- #writeTime{
-          position:fixed;
-           top:8%;
-	   left:43%;
-	   right:60%;
-	   background-color:darkorchid;
-	   color:white;
-	   height:4%;   
-	   border-radius:2px;
-	   width:30%;
-	   text-align:center;
-	   line-height:1em;
-*/	  
+
    }
 </style>
 <script type="text/javascript">
- <!--
-function autocreate(){
-   
-    var table=document.createElement("table");
-    var k=1;
-   
+	var year,month,weekofday,table;
+	window.onload=function(){
+			var mydate=new Date();
+			year=mydate.getFullYear();
+			month=mydate.getMonth()+1;
+			weekofday=new Date(year,month-1, 1).getDay();//计算每个月的第一天是星期几		    
+		
+			autocreate(year,month,weekofday);
 
-    for(var i=1;i<=6;i++){
-	     var tr=document.createElement("tr");
-	    
+
+
+			document.getElementById("btnimg1").onclick=function(){
+				table.remove();
+				if(month>1)
+					month-=1;
+				else{
+					year-=1;
+					month=12;
+				}
+				weekofday=new Date(year,month-1,1).getDay();
+				autocreate(year,month,weekofday);
+			}
+
+			document.getElementById('btnimg2').onclick=function(){
+					table.remove();
+					if(month<12)
+					month+=1;
+				else{
+					year+=1;
+					month=1;
+				}
+				weekofday=new Date(year,month-1,1).getDay();
+				autocreate(year,month,weekofday);
+			}
+
+			document.getElementById("btn1").onclick=function(){
+				var nowDate=new Date();
+				table.remove();
+				year=nowDate.getFullYear();
+				month=nowDate.getMonth()+1;
+				weekofday=new Date(year,month-1,1).getDay();
+				autocreate(year,month,weekofday);
+
+				
+			}			
+	}
+
+function autocreate(year,month,day){  
+    table=document.createElement("table");
+    var k=1;
+    var d3=new Date(year,month,0);
+    for(var i=1;i<=7;i++){
+	     var tr=document.createElement("tr");	    
         for(var j=1;j<=7;j++){
-		var td=document.createElement("td");
-                 
+		var td=document.createElement("td");     
 		if(i==1){
-		//	var styleObj=document.styleSheets[0].cssRules[0].style;
-		//	styleObj.removeProperty('color');
-		//	document.styleSheet[0].deleteRule(0);
 			td.setAttribute("style","border:0");
 			td.setAttribute("style","font-size:1em")
-			//$('td').off('mouseenter').unbind('mouseleave');
 			switch(j){      
-				case 1: td.innerHTML="MON";
+				case 1: td.innerHTML="Mon";
 			          break;
-				case 2: td.innerHTML="TUE";
+				case 2: td.innerHTML="Tue";
 					break;
-				case 3: td.innerHTML="WED";
+				case 3: td.innerHTML="Wed";
 					break;
-				case 4: td.innerHTML="THU";
+				case 4: td.innerHTML="Thu";
 					break;
-				case 5: td.innerHTML="FRI";
+				case 5: td.innerHTML="Fri";
 					break;
-				case 6: td.innerHTML="SAT";
+				case 6: td.innerHTML="Sat";
 					break;
-				case 7: td.innerHTML="SUN";
+				case 7: td.innerHTML="Sun";
 					break;
 			}
-		}
-
-		else{  
-	
-		      td.setAttribute("style","border:0"); 
-			var myDate = new Date();
-			var  d1=myDate.getDate();
-			var  thisyear=myDate.getFullYear();
-			var  thismonth=myDate.getMonth()+1;
-			var d2=new Date(thisyear,thismonth-1, 1);
-		    
-		
-                        var d3=new Date(thisyear,thismonth, 0);
-		//	console.log(d3.getDate());
-
-		
-			
-                  
-		 
-		 
-			if(j<d2.getDay()&&(i==2)){
+		}else{                          
+			if(j<day&&(i==2))
 				td.innerHTML='';
-			}else{
+			else{
 				if(k<=d3.getDate())
-				     td.innerHTML=k;
-			
-				if(k==d1){
-					td.setAttribute("style","background:darkorchid;");
-			
+				     td.innerHTML=k;			
+				if(k==new Date().getDate()){
+					td.setAttribute("style","background:darkorchid;");			
 				}
 					k++;
-			}
-		
-		}
-                var t1=new Date();
-		var t2=t1.getMonth();
-		var t3=t1.getFullYear();
-		var t4=t1.getDate();
-	//	alert(t2);
-		var monthNum=["January","February","March","April","May","June","July","August","September","October","November","December"];
-		document.getElementById("changeColor").innerHTML=monthNum[t2]+'&nbsp;&nbsp<br/><font size="6px">'+t1.getDate()+'</font>';
-   
-	    	var val1=0,val2=0;
-	//	var btn1=document.getElementById("btn1");
-	//	var btnT1=new Date();
-	
+			}		     			
+		}		 
+     tr.appendChild(td);}
+     table.appendChild(tr); }
+     document.body.appendChild(table);
 
-        var btnImg1=document.getElementById("btnImg1");
-	 var btnImg2=document.getElementById("btnImg2");
-	 btn1.innerHTML=t3+"年"+(t2+1)+"月"+t4+"日";
-	
-	 btnImg1.onclick=function(){
-		// val1++;
-		 // alert(val1);
-		 if(--t2>=0){
-			 btn1.innerHTML=t3+"年"+(t2+1)+"月"+t4+"日";
-		 }else{
-			 //if(t3)
-			 --t3;
-			 t2=12;
-			 --t2;
-			 btn1.innerHTML=t3+"年"+(t2+1)+"月"+t4+"日";
-
-                  //  alert("再加就是年了哦！");
-
-		 }
-
-	 }
-	 
-	 btnImg2.onclick=function(){
-		 if(++t2<=11){
-                btn1.innerHTML=t3+"年"+(t2+1)+"月"+t4+"日";
-	
-		// alert("hello!");
-		 }
-	 
-	 }
-	 btn1.onclick=function(){
-	 btn1.innerHTML=t3+"年"+(t2+1)+"月"+t4+"日";
-	 }
+     document.getElementById('btn1').innerHTML=year+"年"+month+"月"+new Date().getDate()+"日";
+     var monthnum=["January","February","March","April","May","June","July","August","September","October","November","December"];
+		document.getElementById("changecolor").innerHTML=monthnum[month-1]+'&nbsp;&nbsp<br/><font size="6px">'+new Date().getDate()+'</font>';
+}
 
 
-            tr.appendChild(td);
-            }
-           table.appendChild(tr); 
-        }
-         document.getElementById("d1").appendChild(table);
-  /*
-	 var window_width=document.documentElement.clientWidth;
-	 var window_height=document.documentElement.clientHeight;
-	
-	 alert(document.documentElement.clientWidth);
-	 alert(document.documentElement.clientHeight);
-	 window.onresize=new function(){
-		 if(window_width<600||window_height<500)
-		 {window.resizeTo(800,600);};
 
-		 }
- */
-	 $('table td:gt(6)').hover(function(){
-			 if($('td').html()!=="undefined"){
-			 $(this).addClass('myStyle');}},
-					function(){
-					$(this).removeClass('myStyle');});
- 
-       
 
-   }
-   
 
 </script>
 </head>
-<body onload="autocreate()">
+<body>
 
 	<center>
 	
 		<div id="outer">
 		
-			<div id="changeColor"></div>
-			<div  id="btnImg1" style="cursor:pointer;"><font style="font-size:1.5em"><</font></div>
-				<div id="btnImg2" style="cursor:pointer;"><font style="font-size:1.5em">></font></div>
+			<div id="changecolor"></div>
+			<div  id="btnimg1" style="cursor:pointer;"><font style="font-size:1.5em"><</font></div>
+				<div id="btnimg2" style="cursor:pointer;"><font style="font-size:1.5em">></font></div>
 			
 		
 				<div title="today" id="btn1" class="btn1" style="cursor:pointer;"><center></center></div>
@@ -307,7 +225,7 @@ function autocreate(){
 				<div id="d1"></div>
 		</div>
 	</center>
-	<div id="writeTime"></div>	
+	
 </body>
 </html>
 
