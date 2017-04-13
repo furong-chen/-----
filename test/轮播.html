@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#banner{
+				position:relative;
+				top:25px;
+				left: 25px;
+				width:500px;
+				height:350px;
+				border-radius:5px 5px 5px 5px;
+			}
+			#panel{
+				position:absolute;
+				top:10%;
+				right:35%;
+				width:550px;
+				height:425px;
+				border:2px solid grey;
+				border-radius:5px 5px 5px 5px;
+			}
+			ul{
+				position:absolute;
+				top:85%;
+				right:38%;
+				
+			}
+			li{
+				float:left;
+				list-style-type:none;
+				margin:15px;
+			    cursor: pointer;
+			}
+			
+		</style>
+		<script>
+		/*向左轮播为实现，amrquee未接触，定时轮播还有一点问题*/
+			window.onload=function(){
+				var panel=document.getElementById('div');
+				var banner=document.getElementById('banner');
+				var aimg=["img/塔.jpg","img/绿与水.jpg","img/山.jpg"];
+				var oul=document.getElementsByTagName('ul')[0];
+				var oli=oul.getElementsByTagName('li');
+				var oimg=oul.getElementsByTagName('img');
+				var ourl=['img/小圆点-3.gif','img/小圆点-2.gif'];
+				var len=oimg.length;
+				var count=0;
+				var index;
+				var timer;
+			        timer=setInterval(scorll,1000);
+			           
+					for(var i=0;i<aimg.length;i++){
+						oimg[i].index=i;
+					 (function(i){
+					 oimg[i].onmouseover=function(){
+					 	clearInterval(timer);
+					   this.src=ourl[0];
+					   banner.src=aimg[i];
+					}
+					 })(i);
+					}
+					
+					for(var j=0;j<len;j++){
+					 oimg[j].index=j;
+					 (function(j){
+					 oimg[j].onmouseout=function(){
+					   this.src=ourl[1];
+					  timer=setInterval(scorll,1000);
+					}
+					 })(j);
+					}
+					
+					function scorll(){
+						if(count<aimg.length){
+							//this.src=ourl[0];
+							banner.src=aimg[count];
+							count++;
+						}else{
+							count=0;
+							//clearInterval(scorll());
+						}
+					} 
+					
+				//function changePx(){
+					
+			//	}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="panel"><img id='banner'src='img/塔.jpg' />
+		<ul id="oul">
+		    <li><img src="img/小圆点-2.gif"></li>
+			<li><img src="img/小圆点-2.gif"></li>
+			<li><img src="img/小圆点-2.gif"></li>
+		</ul></div>
+		
+	</body>
+</html>
